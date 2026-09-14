@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>A thank you, from Hiro Travels</title>
+<style>
+  :root {
+    --ink: #14202e;
+    --muted: #5b6b7c;
+    --accent: #0b6b5f;
+    --paper: #ffffff;
+    --ground: #f3f1ec;
+    --line: #e2ded6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px;
+    background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", sans-serif;
+    line-height: 1.6;
+    display: flex; align-items: center; justify-content: center; min-height: 100vh;
+  }
+  .card {
+    background: var(--paper); max-width: 460px; width: 100%;
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 40px 32px; text-align: center;
+    box-shadow: 0 12px 40px rgba(20, 32, 46, .08);
+  }
+  .eyebrow {
+    font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 14px;
+  }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 10px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  .discount { font-size: 3.2rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .code-label { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .code {
+    display: block; width: 100%; margin: 10px 0 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 1.5rem; font-weight: 700; letter-spacing: .12em;
+    padding: 16px; border: 2px dashed var(--accent); border-radius: 10px;
+    background: #f7fbfa; color: var(--ink); cursor: pointer;
+  }
+  .copied { font-size: .8rem; color: var(--accent); height: 1.2em; margin-bottom: 18px; }
+  .cta {
+    display: block; background: var(--accent); color: #fff; text-decoration: none;
+    padding: 15px 20px; border-radius: 10px; font-weight: 650; margin-top: 8px;
+  }
+  .cta:hover { background: #095349; }
+  .fine { font-size: .78rem; color: var(--muted); margin-top: 22px; }
+  @media (max-width: 420px) {
+    body { padding: 12px; }
+    .card { padding: 30px 20px; }
+    h1 { font-size: 1.4rem; }
+    .discount { font-size: 2.6rem; }
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow">Members only</div>
+    <h1>A thank you, from Hiro Travels</h1>
+    <p class="sub">You are one of our regulars, so here is something just for you.</p>
+
+    <div class="discount">20% OFF</div>
+
+    <div class="code-label">Your code</div>
+    <button class="code" id="code" type="button">HIRO20</button>
+    <div class="copied" id="copied"></div>
+
+    <a class="cta" href="https://hirotravels.site/">Book with this code</a>
+
+    <p class="fine">Valid until 2026-10-14. One use per customer.</p>
+  </main>
+
+  <script>
+    // Tap the code to copy it. Falls back silently where the clipboard API
+    // is unavailable, which is common inside in-app browsers.
+    var button = document.getElementById('code');
+    var notice = document.getElementById('copied');
+    button.addEventListener('click', function () {
+      var text = button.textContent.trim();
+      try {
+        navigator.clipboard.writeText(text).then(function () {
+          notice.textContent = 'Copied';
+          setTimeout(function () { notice.textContent = ''; }, 2000);
+        });
+      } catch (err) {
+        notice.textContent = 'Select and copy: ' + text;
+      }
+    });
+  </script>
+</body>
+</html>
