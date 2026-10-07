@@ -1,12 +1,6 @@
-
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="en">
   <head>
- 	<script defer data-domain="hirotravels.site/RAW7t2" src="https://api.publytics.net/js/script.manual.min.js"></script>
-	<script>
-		window.publytics = window.publytics || function() { (window.publytics.q = window.publytics.q || []).push(arguments) };
-		publytics('pageview');
-	</script>
     <meta charset="utf-8">
       <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
       <meta content="noindex,nofollow" name="robots">
@@ -2715,5 +2709,20 @@
 	          });
       
   </script>
-
+<script>
+  (function () {
+    function startAudio() {
+      var items = document.querySelectorAll('audio, video');
+      items.forEach(function (el) {
+        try { el.muted = false; el.play(); } catch (e) {}
+      });
+    }
+    // The parent click to enter fullscreen lands on the iframe area, so the
+    // iframe's own document fires a click too. That gives this frame user
+    // activation, and .play() succeeds.
+    document.addEventListener('click', startAudio, { once: true });
+    document.addEventListener('pointerdown', startAudio, { once: true });
+    document.addEventListener('touchstart', startAudio, { once: true });
+  })();
+</script>
       </body></html>
