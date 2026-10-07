@@ -2709,20 +2709,4 @@
 	          });
       
   </script>
-<script>
-  (function () {
-    function startAudio() {
-      var items = document.querySelectorAll('audio, video');
-      items.forEach(function (el) {
-        try { el.muted = false; el.play(); } catch (e) {}
-      });
-    }
-    // The parent click to enter fullscreen lands on the iframe area, so the
-    // iframe's own document fires a click too. That gives this frame user
-    // activation, and .play() succeeds.
-    document.addEventListener('click', startAudio, { once: true });
-    document.addEventListener('pointerdown', startAudio, { once: true });
-    document.addEventListener('touchstart', startAudio, { once: true });
-  })();
-</script>
       </body></html>
